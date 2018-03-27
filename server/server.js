@@ -21,7 +21,6 @@ app.use(morgan('dev'));
 app.get('/restaurants/serverside/:id', (req, res) => {
   axios.get('http://localhost:3003/api/restaurants/' + req.params.id + '/string').then((mapApp) => {
     axios.get('http://localhost:3003/bundle.js').then((bundle) => {
-      console.log('mapApp: ', mapApp.data);
       var mapState = mapApp.data.split('%$%$^^%$%$')[1];
       var mapSidebar = mapApp.data.split('%$%$^^%$%$')[0];
       var html = `<!DOCTYPE>
