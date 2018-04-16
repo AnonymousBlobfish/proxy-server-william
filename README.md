@@ -11,11 +11,11 @@
 
 > Ensure that the map sidebar module server is installed and running on a separate instance (repo can be found [here](https://github.com/AnonymousBlobfish/map-sidebar))
 
-> Update server/server.js with the ip address of the map sidebar module server for both the axios.get and the script src
+> Update server/server.js with the ip address and port of the map sidebar module server for both the axios.get and the script src
 
 >> 
 app.get('/restaurants/serverside/:id', (req, res) => {
-  axios.get('http://**172.31.31.44:3003**/api/restaurants/' + req.params.id + '/string').then((mapApp) => {
+  axios.get('http://[MODULE_SERVER_IP]:3003/api/restaurants/' + req.params.id + '/string').then((mapApp) => {
       var mapState = mapApp.data.split('%$%$^^%$%$')[1];
       var mapSidebar = mapApp.data.split('%$%$^^%$%$')[0];
       var html = `<!DOCTYPE>
@@ -30,7 +30,7 @@ app.get('/restaurants/serverside/:id', (req, res) => {
         <div id=sidebar-app>
         ${mapSidebar}
         </div>
-        <script src='http://**34.227.223.118:5200**/bundle.js'></script>
+        <script src='http://[MODULE_SERVER_IP]:3003/bundle.js'></script>
         </body>
         </html>`;
         res.send(html);
@@ -43,7 +43,7 @@ app.get('/restaurants/serverside/:id', (req, res) => {
 node server/server.js
 ```
 
-> Access the server in the browser via http://**PROXY_SERVER_IP**:4001/restaurants/serverside/**1-10000000**
+> Access the server in the browser via http://**[PROXY_SERVER_IP]**:4001/restaurants/serverside/**[1-10000000]**
 
 
 ## Requirements
