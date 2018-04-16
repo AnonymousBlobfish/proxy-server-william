@@ -1,6 +1,6 @@
 # Project Name
 
-> Displays a map sidebar module for 10,000,000 generated restaurant listings.
+Displays a map sidebar module for 10,000,000 generated restaurant listings.
 
 ## Table of Contents
 
@@ -9,12 +9,11 @@
 
 ## Usage
 
-> Ensure that the map sidebar module server is installed and running on a separate instance (repo can be found [here](https://github.com/AnonymousBlobfish/map-sidebar))
+Ensure that the map sidebar module server is installed and running on a separate instance (repo can be found [here](https://github.com/AnonymousBlobfish/map-sidebar))
 
-> Update server/server.js with the ip address and port of the map sidebar module server for both the axios.get and the script src
+Update server/server.js with the ip address and port of the map sidebar module server for both the axios.get and the script src
 
->> 
-app.get('/restaurants/serverside/:id', (req, res) => {
+>app.get('/restaurants/serverside/:id', (req, res) => {
   axios.get('http://[MODULE_SERVER_IP]:3003/api/restaurants/' + req.params.id + '/string').then((mapApp) => {
       var mapState = mapApp.data.split('%$%$^^%$%$')[1];
       var mapSidebar = mapApp.data.split('%$%$^^%$%$')[0];
@@ -37,14 +36,13 @@ app.get('/restaurants/serverside/:id', (req, res) => {
   });
 });
 
-> Start the server
+Start the server
 
 ```sh
 node server/server.js
 ```
 
-> Access the server in the browser via http://**[PROXY_SERVER_IP]**:4001/restaurants/serverside/**[1-10000000]**
-
+Access the server in the browser via http://**[PROXY_SERVER_IP]**:4001/restaurants/serverside/**[1-10000000]**
 
 ## Requirements
 
